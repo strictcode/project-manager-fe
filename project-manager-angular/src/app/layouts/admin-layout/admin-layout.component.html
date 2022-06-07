@@ -1,0 +1,32 @@
+<nz-layout class="main-layout">
+  <nz-header class="px-3 bg-primary-900">
+    <div class="logo">
+      <h1 class="inline-block float-left py-4 text-white text-3xl">Project Manager</h1>
+
+      </div>
+    <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu float-right ">
+      <li nz-menu-item *ngIf="(user$ | async)" class="user-section" [nzSelected]="false">
+        <nz-avatar nzSize="large" nzIcon="user" class="float-left inline-block mt-4 mr-5"></nz-avatar>
+        <section class="float-left flex py-2 flex-col justify-evenly h-full text-white text user-info"><span
+            class="text-lg">{{(user$ | async)!.userName}}</span> <span class="text-slate-400">{{(user$ | async)!.userName}}</span></section>
+      </li>
+      <li nz-menu-item (click)="logout()"><i nz-icon nzType="logout" nzTheme="outline" class="mr-2"></i> Odhlásit se
+      </li>
+    </ul>
+  </nz-header>
+  <nz-layout>
+    <nz-sider nzWidth="250px" nzTheme="light">
+      <ul nz-menu nzMode="inline" class="sider-menu">
+        <li nz-menu-item nzMatchRouter><a routerLink="/projects"><i nz-icon nzType="dashboard"></i> <span>Projekty</span></a></li>
+        <li nz-menu-item nzMatchRouter><a routerLink="/tasks"><i nz-icon nzType="bars"></i> <span>Úkoly</span></a></li>
+        <li nz-menu-item nzMatchRouter><a routerLink="/users"><i nz-icon nzType="team"></i> <span>Uživatelé</span></a></li>
+      </ul>
+    </nz-sider>
+    <nz-layout class="inner-layout">
+
+      <nz-content>
+        <router-outlet></router-outlet>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>

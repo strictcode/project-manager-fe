@@ -1,0 +1,32 @@
+<section class="fp flex align-middle items-center justify-center flex-col">
+  <section class="p-10 rounded-3xl shadow-lg bg-white w-80 lg:w-1/4">
+    <header class="mb-4 text-center">
+      <h1 class="text-3xl font-bold my-3">ProjectManager</h1>
+      <h2 class="text-center text-xl font-bold my-3">Přihlášení</h2>
+    </header>
+    <main>
+      <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="submitForm()" [nzLayout]="'vertical'" >
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Zadejte email!">
+            <nz-input-group nzPrefixIcon="user" nzSize="large">
+              <input type="text" nz-input formControlName="email"
+                placeholder="E-mail" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Zadejte heslo!">
+            <nz-input-group nzPrefixIcon="lock" nzSize="large">
+              <input type="password" nz-input formControlName="password"
+                placeholder="Heslo" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <section id="buttons" class="mt-5">
+          <button nz-button [nzType]="'primary'" [nzLoading]="isLoading" nzBlock class="uppercase font-semibold py-3 h-auto rounded-md">Přihlásit se</button>
+          <p class="pt-4">Nejste registrovaní? Klikněte <a href="#" routerLink="/auth/forgotten-password" class="p-0 underline">zde.</a> </p>
+        </section>
+      </form>
+    </main>
+  </section>
+</section>

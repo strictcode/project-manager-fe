@@ -1,0 +1,113 @@
+
+.main-layout, .public{
+  min-height: 100vh;
+}
+
+.main-layout {
+
+  .logo{
+    margin-top: -4px;
+  }
+}
+
+.company{
+  height: 64px;
+}
+
+.user-info{
+  line-height: 64px;
+  span{
+    line-height: initial;
+  }
+}
+
+::ng-deep {
+  nz-header{
+    .header-menu{
+      background-color:#0B3166!important;
+      border: none;
+      .ant-menu-item{
+        height: 68px!important;
+        line-height: 70px!important;
+        &:hover{
+          background-color: #19498dc0!important;
+        }
+      }
+      .ant-menu-item-selected, .ant-menu-item-selected:hover{
+        @apply rounded-lg;
+        background-color: white;
+
+        &::after{
+          border: none;
+        }
+        a{
+          @apply text-gray-900;
+        }
+      }
+    }
+    #main-menu{
+      display: flex;
+      flex-direction: row;
+      align-content: stretch;
+      justify-content: space-evenly;
+      @apply p-1;
+      @apply rounded-lg;
+      //opacity: 0.5;
+      border: none;
+      .ant-menu-item{
+        @apply p-1.5;
+        @apply text-lg;
+        @apply rounded-lg;
+        @apply font-mono;
+        line-height: auto;
+        width: 100%;
+        text-align: center;
+        &::after{
+          border: none;
+        }
+        i{
+          font-size: 1em;
+          vertical-align: 2px;
+        }
+        a{
+          @apply text-white;
+        }
+
+        &:hover{
+          background-color: #19498dc0;
+        }
+      }
+
+      .ant-menu-item-selected, .ant-menu-item-selected:hover{
+        @apply rounded-lg;
+        background-color: white;
+
+        &::after{
+          border: none;
+        }
+        a{
+          @apply text-gray-900;
+        }
+      }
+    }
+
+  }
+
+}
+.credits{
+  &:hover{
+    background-color:#17569f;
+    cursor: pointer;
+  }
+  i{
+    margin-top: -3px;
+  }
+
+}
+
+.company{
+  &:hover{
+    background-color:#17569f;
+    cursor: pointer;
+  }
+}

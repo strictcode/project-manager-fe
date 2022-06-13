@@ -20,6 +20,14 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { PublicLayoutComponent } from './layouts/public-layout/public-layout.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { ProjectPageDetailComponent } from './pages/project-page-detail/project-page-detail.component';
+import { UsersPageComponent } from './pages/users-page/users-page.component';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 registerLocaleData(cs);
 
@@ -29,7 +37,10 @@ registerLocaleData(cs);
     LoginPageComponent,
     DashboardPageComponent,
     AdminLayoutComponent,
-    PublicLayoutComponent
+    PublicLayoutComponent,
+    RegisterPageComponent,
+    ProjectPageDetailComponent,
+    UsersPageComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +55,12 @@ registerLocaleData(cs);
     NzButtonModule,
     NzFormModule,
     NzIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NzNotificationModule,
+    NzEmptyModule,
+    NzModalModule,
+    NzBreadCrumbModule,
+    NzBadgeModule
   ],
   providers: [DatePipe, { provide: NZ_I18N, useValue: cs_CZ }],
   bootstrap: [AppComponent]

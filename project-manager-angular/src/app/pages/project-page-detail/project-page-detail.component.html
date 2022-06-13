@@ -1,0 +1,30 @@
+<section class="p-5 h-full">
+  <section class="columns-2 mb-2">
+    <h1 class="text-3xl font-bold text-primary-900">{{project.name}}</h1>
+    <button type="button" class="text-white bg-amber-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium float-right rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Vytvořit issue</button>
+  </section>
+  <nz-breadcrumb class="mb-4">
+    <nz-breadcrumb-item>Administrace</nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <a routerLink="/admin/projects">Projekty</a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <a routerLink="/admin/projects/{{project.id}}">{{project.name}}</a>
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
+  <ng-container *ngIf="project.issues.length > 0 else noDataTpl">
+    <section class="grid grid-cols-3 gap-4 pt-2">
+      <section *ngFor="let issue of project.issues" class="bg-white p-5 shadow-md rounded-md">
+        <h2 class="text-xl font-bold ">{{issue.summary}}</h2>
+      </section>
+
+    </section>
+  </ng-container>
+</section>
+
+
+<ng-template #noDataTpl>
+  <section class="flex flex-col justify-center h-full">
+    <nz-empty></nz-empty>
+  </section>
+</ng-template>

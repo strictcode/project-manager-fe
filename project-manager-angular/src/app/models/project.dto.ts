@@ -1,9 +1,12 @@
+import { IssueDTO } from "./issue.dto";
 
 export class ProjectDTO {
 
   public id!: string;
 
   public name!: string;
+
+  public issues: IssueDTO[] = [];
 
   public createdName!: string;
 

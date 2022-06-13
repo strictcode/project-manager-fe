@@ -53,7 +53,7 @@ export class LoginPageComponent implements OnInit {
 
     this.accountService.login(model).subscribe({
       next: (v) => {
-        this.router.navigate(['/projects']);
+        this.router.navigate(['admin','projects']);
 
         // this.accountService.getLoggedUser$.subscribe({
         //   next: (response) => {

@@ -12,7 +12,19 @@ export class AccountService {
 
   public getLoggedUser$ = this.loggedUserSubject$.asObservable();
 
+  private usersSubject$ = new BehaviorSubject<UserDTO[]>([]);
+
+  public getUsers$ = this.usersSubject$.asObservable();
+
   constructor(private http: HttpClient) {
+  }
+
+  searchForUsers() {
+    this.http.get<UserDTO[]>('/api/User').subscribe({
+      next: (users) => {
+        this.usersSubject$.next(users);
+      }
+    })
   }
 
   loadUserInfo(): Observable<UserDTO> {
@@ -24,10 +36,14 @@ export class AccountService {
   }
 
   login(model: LoginDTO): Observable<void> {
-    return this.http.post<undefined>('/api/User/login', model);
+    return this.http.post<undefined>('/api/User/Login', model);
+  }
+
+  register(model: LoginDTO): Observable<void> {
+    return this.http.post<undefined>('/api/User/Register', model);
   }
 
   logout(): Observable<void> {
-    return this.http.post<undefined>('/api/User/logout', null);
+    return this.http.post<undefined>('/api/User/Logout', null);
   }
 }

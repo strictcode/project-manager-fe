@@ -1,0 +1,22 @@
+<section class="p-5 h-full">
+  <section class="columns-2">
+    <h1 class="text-3xl font-bold text-primary-900">Uživatelé</h1>
+  </section>
+
+  <ng-container *ngIf="(users$ | async)!.length > 0 else noDataTpl">
+    <section class="grid grid-cols-3 gap-4 pt-2">
+      <section *ngFor="let user of (users$ | async)" class="bg-white p-5 shadow-md rounded-md">
+        <h2 class="text-xl font-bold ">{{user.userName}}</h2>
+      </section>
+
+    </section>
+  </ng-container>
+</section>
+
+
+<ng-template #noDataTpl>
+  <section class="flex flex-col justify-center h-full">
+    <nz-empty></nz-empty>
+  </section>
+
+</ng-template>

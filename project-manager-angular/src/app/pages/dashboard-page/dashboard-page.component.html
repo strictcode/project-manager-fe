@@ -1,1 +1,58 @@
-<p>dashboard-page works!</p>
+<section class="p-5 h-full">
+  <section class="columns-2 mb-2">
+    <h1 class="text-3xl font-bold text-primary-900">Projekty</h1>
+    <button type="button" (click)="createProject()"
+      class="text-white bg-amber-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium float-right rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Vytvořit
+      projekt</button>
+  </section>
+  <nz-breadcrumb class="mb-4">
+    <nz-breadcrumb-item>Administrace</nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <a routerLink="/admin/projects">Projekty</a>
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
+
+  <ng-container *ngIf="(projects$ | async)!.length > 0 else noDataTpl">
+    <section class="grid grid-cols-3 gap-4">
+      <nz-ribbon nzText="Vlastník: {{project.createdName}}" *ngFor="let project of (projects$ | async)">
+        <section class="bg-white p-5 shadow-md rounded-md">
+
+          <h2 class="text-xl font-bold ">{{project.name}}</h2>
+          <ul>
+            <li>Task</li>
+            <li>Task</li>
+            <li>Task</li>
+          </ul>
+          <section class="columns-2 mt-2">
+            <button type="button" routerLink="/admin/projects/{{project.id}}"
+              class="text-white block w-full bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Zobrazit
+              detail</button>
+            <button type="button" (click)="editProject(project)"
+              class="text-white block w-full bg-amber-700 hover:bg-amber-800 focus:outline-none focus:ring-4 focus:ring-amber-300 font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">Upravit
+              projekt</button>
+          </section>
+        </section>
+      </nz-ribbon>
+    </section>
+  </ng-container>
+</section>
+
+
+<ng-template #noDataTpl>
+  <section class="flex flex-col justify-center h-full">
+    <nz-empty></nz-empty>
+  </section>
+
+</ng-template>
+
+<nz-modal [(nzVisible)]="showProjectModal" [nzTitle]="editMode ? 'Úprava projektu' : 'Nový projekt'"
+  (nzOnCancel)="handleCancel()" (nzOnOk)="submitData()">
+  <ng-container *nzModalContent>
+    <nz-form-item>
+      <nz-form-label>Název projektu</nz-form-label>
+      <nz-form-control>
+        <input nz-input type="text" [(ngModel)]="projectName">
+      </nz-form-control>
+    </nz-form-item>
+  </ng-container>
+</nz-modal>

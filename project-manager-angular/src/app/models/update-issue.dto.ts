@@ -5,6 +5,12 @@ export class UpdateIssueDTO {
 
   public summary!: string;
 
+  public statusId = 0;
+
+  public description!: string;
+
   public assigneeId!: string;
+
+  public projectId!: string;
 
 }

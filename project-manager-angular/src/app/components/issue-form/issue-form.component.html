@@ -1,0 +1,66 @@
+<nz-modal [(nzVisible)]="showIssueModal" [nzTitle]="editMode ? 'Úprava issue' : 'Nový issue'"
+  (nzOnCancel)="handleCancel()" (nzOnOk)="submitData()">
+  <ng-container *nzModalContent>
+    <!-- <nz-form-item>
+      <nz-form-label>Název projektu</nz-form-label>
+      <nz-form-control>
+        <input nz-input type="text" [(ngModel)]="projectName">
+      </nz-form-control>
+    </nz-form-item> -->
+    <form nz-form [formGroup]="issueForm" class="login-form" (ngSubmit)="submitData()" [nzLayout]="'vertical'" >
+      <nz-form-item>
+        <nz-form-label>Titulek</nz-form-label>
+        <nz-form-control nzErrorTip="Zadejte email!">
+          <nz-input-group nzSize="large">
+            <input type="text" nz-input formControlName="summary"
+              placeholder="Titulek" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Zadejte heslo!">
+          <nz-form-label>Popisek</nz-form-label>
+          <nz-input-group nzSize="large">
+            <textarea nz-input formControlName="description" placeholder="Popisek" ></textarea>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Zadejte heslo!">
+          <nz-form-label>Stav</nz-form-label>
+          <nz-input-group nzSize="large">
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Vyberte stav" formControlName="statusId" class="w-full">
+              <nz-option nzLabel="Nové" [nzValue]="1"></nz-option>
+              <nz-option nzLabel="Probíhající" [nzValue]="2"></nz-option>
+              <nz-option nzLabel="Hotovo" [nzValue]="3"></nz-option>
+            </nz-select>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Zadejte heslo!">
+          <nz-form-label>Projekty</nz-form-label>
+          <nz-input-group nzSize="large">
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Vyberte projekt" formControlName="projectId" class="w-full">
+              <nz-option *ngFor="let project of (projects$ | async)" [nzLabel]="project.name" [nzValue]="project.id"></nz-option>
+            </nz-select>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Zadejte heslo!">
+          <nz-form-label>Přiřazeno</nz-form-label>
+          <nz-input-group nzSize="large">
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Vyberte uživatele" formControlName="assigneeId" class="w-full">
+              <nz-option *ngFor="let user of (users$ | async)" [nzLabel]="user.mail" [nzValue]="user.id"></nz-option>
+            </nz-select>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <!-- <section id="buttons" class="mt-5">
+        <button nz-button [nzType]="'primary'" [nzLoading]="isLoading" nzBlock class="uppercase font-semibold py-3 h-auto rounded-md">Registrovat se</button>
+        <p class="pt-4">Zpátky na login. Klikněte <a href="#" routerLink="/auth/login" class="p-0 underline">zde.</a> </p>
+      </section> -->
+    </form>
+  </ng-container>
+</nz-modal>

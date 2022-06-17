@@ -28,6 +28,10 @@ import { ProjectPageDetailComponent } from './pages/project-page-detail/project-
 import { UsersPageComponent } from './pages/users-page/users-page.component';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { IssueFormComponent } from './components/issue-form/issue-form.component';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { IssueComponentComponent } from './components/issue-component/issue-component.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 registerLocaleData(cs);
 
@@ -40,7 +44,9 @@ registerLocaleData(cs);
     PublicLayoutComponent,
     RegisterPageComponent,
     ProjectPageDetailComponent,
-    UsersPageComponent
+    UsersPageComponent,
+    IssueFormComponent,
+    IssueComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +66,9 @@ registerLocaleData(cs);
     NzEmptyModule,
     NzModalModule,
     NzBreadCrumbModule,
-    NzBadgeModule
+    NzBadgeModule,
+    NzSelectModule,
+    DragDropModule
   ],
   providers: [DatePipe, { provide: NZ_I18N, useValue: cs_CZ }],
   bootstrap: [AppComponent]

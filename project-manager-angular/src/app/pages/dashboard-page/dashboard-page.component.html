@@ -18,10 +18,9 @@
         <section class="bg-white p-5 shadow-md rounded-md">
 
           <h2 class="text-xl font-bold ">{{project.name}}</h2>
-          <ul>
-            <li>Task</li>
-            <li>Task</li>
-            <li>Task</li>
+          <ul class="mt-2 h-24 overflow-auto">
+            <li *ngFor="let issue of filterProjectIssues(project.issues)">{{issue.summary}}</li>
+            <li *ngIf="filterProjectIssues(project.issues).length <= 0">Nejsou zadané žádné úkoly</li>
           </ul>
           <section class="columns-2 mt-2">
             <button type="button" routerLink="/admin/projects/{{project.id}}"

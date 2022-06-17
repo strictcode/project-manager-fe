@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { IssueDTO } from 'src/app/models/issue.dto';
 import { ProjectDTO } from 'src/app/models/project.dto';
+import { StatusEnum } from 'src/app/models/status.enum';
 import { UpdateProjectDTO } from 'src/app/models/update-project.dto.';
 import { ProjectService } from 'src/app/services/project.service';
 
@@ -75,6 +77,10 @@ export class DashboardPageComponent implements OnInit {
     this.projectName = undefined;
     this.editMode = false;
     this.showProjectModal = false;
+  }
+
+  filterProjectIssues(issues: IssueDTO[]): IssueDTO[] {
+    return issues.filter(issue => issue.statusId !== StatusEnum.Done);
   }
 
 }

@@ -1,3 +1,4 @@
+import { StatusEnum } from "./status.enum";
 
 export class IssueDTO {
 
@@ -7,8 +8,10 @@ export class IssueDTO {
 
   public description!: string;
 
-  public reportedId!: string;
+  public statusId!: StatusEnum;
 
-  public assigneeId!: string;
+  public reporter!: { mail: string; id: string;};
+
+  public assignee!: { mail: string; id: string;};
 
 }

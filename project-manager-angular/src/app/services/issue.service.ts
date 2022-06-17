@@ -36,4 +36,9 @@ export class IssueService {
     return this.http.put<IssueDTO>('/api/Issue/' + id, model);
   }
 
+  patchStatus(id: string, statusId: number): Observable<IssueDTO> {
+    return this.http.patch<IssueDTO>('/api/Issue/' + id + '/Status/'+ statusId, null);
+  }
+
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { LoginDTO } from 'src/app/models/login.dto';
 import { AccountService } from 'src/app/services/account.service';
 
@@ -25,6 +26,7 @@ export class LoginPageComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private notification: NzNotificationService,
     private accountService: AccountService
   ) {}
 
@@ -54,7 +56,7 @@ export class LoginPageComponent implements OnInit {
     this.accountService.login(model).subscribe({
       next: (v) => {
         this.router.navigate(['admin','projects']);
-
+        this.notification.success('Přihlášení proběhlo úspěšně!', 'Přesměrovávám na dashboard s projekty.')
         // this.accountService.getLoggedUser$.subscribe({
         //   next: (response) => {
         //
@@ -62,7 +64,7 @@ export class LoginPageComponent implements OnInit {
         // })
       },
       error: (e) => {
-        console.error(e);
+        this.notification.error('Přihlášení se nezdařilo!', 'Zadal jste špatné přihlašovací údaje, zkuste zkontrolovat vaše údaje a přihlásit se znovu.')
         this.isLoading = false;
       },
       complete: () => {

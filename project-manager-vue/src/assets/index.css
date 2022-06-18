@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+button, [type='button'], [type='reset'], [type='submit'] {
+    background-color: inherit;
+}
+
+.ant-btn-primary {
+    background-color: #1890ff;
+}

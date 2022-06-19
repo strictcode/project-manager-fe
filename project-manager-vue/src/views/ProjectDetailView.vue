@@ -22,12 +22,7 @@ export default defineComponent({
       return issues.filter((issue) => issue.statusId !== StatusEnum.Done);
     },
   },
-  async beforeEnter(to, from) {
-       console.log(to.params.id);
-  },
   async beforeRouteUpdate(to, from) {
-    // react to route changes...
-    console.log(to.params.id);
     await this.getProject(to.params.id);
   },
   data() {
@@ -41,10 +36,8 @@ export default defineComponent({
     };
   },
   async created() {
-   
     const route = useRoute();
     const id = route.params.id;
-     console.log(id);
     this.getProject(id);
   },
 });

@@ -3,6 +3,13 @@
     <h1 class="text-3xl font-bold text-primary-900">Uživatelé</h1>
   </section>
 
+  <nz-breadcrumb class="mb-4">
+    <nz-breadcrumb-item>Administrace</nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <a routerLink="/admin/users">Uživatelé</a>
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
+
   <ng-container *ngIf="(users$ | async)!.length > 0 else noDataTpl">
     <section class="grid grid-cols-3 gap-4 pt-2">
       <section *ngFor="let user of (users$ | async)" class="bg-white p-5 shadow-md rounded-md">

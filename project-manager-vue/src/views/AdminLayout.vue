@@ -1,5 +1,5 @@
 <script lang="ts">
-import { RouterView } from "vue-router";
+import { RouterView, RouterLink } from "vue-router";
 import router from "@/router";
 import { notification } from "ant-design-vue";
 import {
@@ -17,18 +17,15 @@ export default defineComponent({
     UserOutlined,
     LogoutOutlined
   },
-  props: {
-    footer: String,
-  },
   methods: {
     async logout() {
       try {
-        await fetch('/api/User/Logout', { method: 'POST'});
+        await fetch('/api/User/Logout', { method: 'POST' });
         notification["success"]({
           message: "Odhlášení proběhlo úspěšně!",
           description: "Přesměrovávám na login.",
         });
-      } catch(err){
+      } catch (err) {
         console.log(err);
       }
       router.push({ path: "/auth/login" });
@@ -54,10 +51,11 @@ export default defineComponent({
   <a-layout style="min-height: 100vh">
     <a-layout-header class="header px-3 bg-primary-900">
       <div class="logo">
-        <h1 class="inline-block float-left pt-3 text-white text-3xl" style="margin-right: calc(75vw - 228px);">Project Manager</h1>
+        <h1 class="inline-block float-left pt-3 text-white text-3xl" style="margin-right: calc(75vw - 228px);">Project
+          Manager</h1>
       </div>
-      <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="horizontal"
-        class="bg-primary-900 header-menu" :style="{ lineHeight: '64px' }">
+      <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="horizontal" class="bg-primary-900 header-menu"
+        :style="{ lineHeight: '64px' }">
         <a-menu-item key="user" class="user-section">
           <a-avatar size="large" class="float-left inline-block mt-4 mr-5">
             <template #icon>
@@ -78,12 +76,16 @@ export default defineComponent({
       <a-layout-sider width="250" style="background: #fff">
         <a-menu v-model:selectedKeys="selectedKeys" theme="light" mode="inline">
           <a-menu-item key="1">
-            <dashboard-outlined />
-            <span>Projekty</span>
+            <RouterLink to="/admin/projects">
+              <dashboard-outlined />
+              <span>Projekty</span>
+            </RouterLink>
           </a-menu-item>
           <a-menu-item key="2">
-            <team-outlined />
-            <span>Uživatelé</span>
+            <RouterLink to="/admin/users">
+              <team-outlined />
+              <span>Uživatelé</span>
+            </RouterLink>
           </a-menu-item>
         </a-menu>
       </a-layout-sider>

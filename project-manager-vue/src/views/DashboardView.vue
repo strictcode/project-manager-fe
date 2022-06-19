@@ -64,10 +64,13 @@ export default defineComponent({
               </li>
             </ul>
             <section class="columns-2 mt-2">
-              <button type="button" routerLink="/admin/projects/{{project.id}}"
-                class="text-white block w-full bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Zobrazit detail
-              </button>
+               <RouterLink :to="{ name: 'ProjectDetail', params: { id: project.id }}">
+                <button
+                  type="button"
+                  class="text-white block w-full bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  Zobrazit detail
+                </button>
+              </RouterLink>
               <button type="button"
                 class="text-white block w-full bg-amber-700 hover:bg-amber-800 focus:outline-none focus:ring-4 focus:ring-amber-300 font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">
                 Upravit projekt

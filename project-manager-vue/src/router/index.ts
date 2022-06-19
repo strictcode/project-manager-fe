@@ -4,6 +4,8 @@ import DashboardViewVue from "@/views/DashboardView.vue";
 import LoginViewVue from "@/views/LoginView.vue";
 import RegisterViewVue from "@/views/RegisterView.vue";
 import { createRouter, createWebHistory } from "vue-router";
+import UsersViewVue from "@/views/UsersView.vue";
+import ProjectDetailViewVue from "@/views/ProjectDetailView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,7 +29,9 @@ const router = createRouter({
         
       },
       children: [
-        { path: "projects", name: "Projects", component: DashboardViewVue}
+        { path: "projects", name: "Projects", component: DashboardViewVue},
+        { path: "projects/:id/detail", name: "ProjectDetail", component: ProjectDetailViewVue},
+        { path: "users", name: "Users", component: UsersViewVue}
       ]
     },
     {

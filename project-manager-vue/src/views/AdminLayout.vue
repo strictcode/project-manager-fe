@@ -51,7 +51,7 @@ export default defineComponent({
   <a-layout style="min-height: 100vh">
     <a-layout-header class="header px-3 bg-primary-900">
       <div class="logo">
-        <h1 class="inline-block float-left pt-3 text-white text-3xl" style="margin-right: calc(75vw - 228px);">Project
+        <h1 class="inline-block float-left pt-3 text-white text-3xl" style="margin-right: calc(75vw - 248px);">Project
           Manager</h1>
       </div>
       <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="horizontal" class="bg-primary-900 header-menu"

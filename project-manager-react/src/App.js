@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import { AdminLayout } from './layout/Admin';
+import { PublicLayout } from './layout/Public';
+import { Login } from './pages/Login';
+import { ProjectDetail } from './pages/Project-detail';
+import { ProjectList } from './pages/Project-list';
+import { Register } from './pages/Register';
+import { UserList } from './pages/User-list';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+       <Route path='admin' element={<AdminLayout/>}>
+        <Route path='projects' element={<ProjectList/>}></Route>
+        <Route path='projects/:id/detail' element={<ProjectDetail/>}></Route>
+        <Route path='users' element={<UserList/>}></Route>
+      </Route>
+      <Route path='auth' element={<PublicLayout/>}>
+        <Route path='login' element={<Login/>}></Route>
+        <Route path='register' element={<Register/>}></Route>
+      </Route>
+    </Routes>
   );
 }
 

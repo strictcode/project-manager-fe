@@ -62,7 +62,7 @@ export default defineComponent({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formState),
       };
-       fetch("/api/User/Login", requestOptions)
+       fetch("/api/User/Register", requestOptions)
         .then((response) => {
           notification["success"]({
             message: "Registrace proběhla úspěšně!",

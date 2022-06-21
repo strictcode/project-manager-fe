@@ -121,3 +121,9 @@ export default defineComponent({
     </section>
   </section>
 </template>
+
+<style>
+  .grid {
+    height: calc(100vh - 190px);
+  }
+</style>
